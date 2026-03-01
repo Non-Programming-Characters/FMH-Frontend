@@ -1,0 +1,26 @@
+app:
+  name: "FMH Voice App"
+  version: "1.0.0"
+  description: "Голосовой помощник"
+
+  dependencies:
+    - plyer
+    - edge-tts
+    - pyjnius
+    - speechrecognition
+    - sounddevice
+    - numpy
+
+  permissions:
+    - INTERNET
+    - RECORD_AUDIO
+    - WRITE_EXTERNAL_STORAGE
+    - READ_EXTERNAL_STORAGE
+
+  android:
+    permissions:
+      - android.permission.INTERNET
+      - android.permission.RECORD_AUDIO
+      - android.permission.SPEAK
+      - android.permission.WRITE_EXTERNAL_STORAGE
+      - android.permission.READ_EXTERNAL_STORAGE
