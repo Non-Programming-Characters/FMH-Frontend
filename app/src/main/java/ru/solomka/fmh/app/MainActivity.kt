@@ -3,7 +3,6 @@ package ru.solomka.fmh.app
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.fmh.R
 import ru.solomka.fmh.app.core.api.CardApi
 import ru.solomka.fmh.app.core.api.RetrofitClient
 import ru.solomka.fmh.app.core.api.UserApi

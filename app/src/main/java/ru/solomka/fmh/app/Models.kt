@@ -2,15 +2,14 @@ package ru.solomka.fmh.app
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.fmh.R
 
 data class FirstAidItem(
     val id: Int,
     val title: String,
     val shortDesc: String,
     val fullDesc: String,
-    val iconResId: Int, // В реальном приложении это URL или Vector
-    val difficulty: Int, // 1-3 звезды
+    val iconResId: Int,
+    val difficulty: Int,
     val source: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
@@ -47,11 +46,7 @@ data class FirstAidItem(
 }
 
 object FirstAidRepository {
-    // Генерация данных "на ходу"
-    fun getAllItems(aidObjects: List<AidObject>): List<FirstAidItem> {
-
-
-
+    fun getAllItems(): List<FirstAidItem> {
         return listOf(
             FirstAidItem(1, "Остановка кровотечения", "Пережмите артерию выше раны",
                 "При артериальном кровотечении кровь алая и бьет фонтаном. Наложите жгут выше раны, подложите ткань.",
@@ -72,7 +67,6 @@ object FirstAidRepository {
     }
 
     fun searchItems(query: String, allItems: List<FirstAidItem>): List<FirstAidItem> {
-        // Если запрос пустой — возвращаем всё
         if (query.isBlank()) return allItems
 
         // Разбиваем запрос на слова (по пробелам), убираем пустые
@@ -84,35 +78,26 @@ object FirstAidRepository {
             val shortDescLower = item.shortDesc.lowercase()
             val fullDescLower = item.fullDesc.lowercase()
 
-            // Считаем "очки релевантности" для каждой карточки
             var score = 0
 
             for (word in searchWords) {
                 val wordLower = word.lowercase()
 
-                // 🔹 Проверяем вхождение слова в каждое поле
-                // Заголовок: наибольший вес (3 балла)
                 if (titleLower.contains(wordLower)) {
                     score += 3
                 }
-                // Краткое описание: средний вес (2 балла)
                 if (shortDescLower.contains(wordLower)) {
                     score += 2
                 }
-                // Полное описание: минимальный вес (1 балл)
                 if (fullDescLower.contains(wordLower)) {
                     score += 1
                 }
             }
 
-            // Возвращаем пару: карточка + её рейтинг
             item to score
         }
-            // 🔹 Убираем ВСЕ карточки, где нет ни одного совпадения (score == 0)
             .filter { it.second > 0 }
-            // Сортируем: от самых релевантных к наименее
             .sortedByDescending { it.second }
-            // Оставляем только карточки (убираем рейтинг из результата)
             .map { it.first }
     }
 }
