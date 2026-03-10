@@ -3,9 +3,9 @@ package ru.solomka.fmh.app
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import ru.solomka.fmh.app.core.api.CardApi
-import ru.solomka.fmh.app.core.api.RetrofitClient
-import ru.solomka.fmh.app.core.api.UserApi
+import ru.solomka.fmh.app.api.CardApi
+import ru.solomka.fmh.app.api.RetrofitClient
+import ru.solomka.fmh.app.api.UserApi
 import ru.solomka.fmh.app.core.dto.Entity
 import ru.solomka.fmh.app.core.dto.card.CardDto
 import ru.solomka.fmh.app.core.repository.NetworkRepository
@@ -19,6 +19,10 @@ import ru.solomka.fmh.app.utils.Cache
 import ru.solomka.fmh.app.utils.impl.CardConcurrentCache
 import ru.solomka.fmh.app.utils.impl.UserTestConcurrentCache
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ru.solomka.fmh.app.voice.VoiceRecognizerModel
+import ru.solomka.fmh.app.voice.VoiceSpeakQueue
+import java.util.ArrayDeque
+import java.util.Queue
 import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
@@ -48,12 +52,17 @@ class MainActivity : AppCompatActivity() {
             val cards: List<CardDto> = cardService.findAllCards()
             // TODO: Сохранять в "кэш" и потом из него дергать
         }
+
+        val vrm = VoiceRecognizerModel(this)
+
+        vrm.speakWithCallback("Привет")
     }
 
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, fragment)
             .commit()
+
     }
 
     companion object {

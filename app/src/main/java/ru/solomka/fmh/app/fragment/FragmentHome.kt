@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.solomka.fmh.app.FirstAidAdapter
 import ru.solomka.fmh.app.FirstAidRepository
-import com.example.fmh.R
 import ru.solomka.fmh.app.FirstAidItem
+import ru.solomka.fmh.app.R
 
 class FragmentHome : Fragment() {
 

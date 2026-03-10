@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.fmh.R
 import com.google.android.material.progressindicator.LinearProgressIndicator
+import ru.solomka.fmh.app.R
 
 class FragmentQuiz : Fragment() {
 

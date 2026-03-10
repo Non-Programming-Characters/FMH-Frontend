@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ru.solomka.fmh.app.MainActivity
-import ru.solomka.fmh.app.core.api.UserApi
+import ru.solomka.fmh.app.api.UserApi
 import ru.solomka.fmh.app.core.dto.user.UserTestInfoDto
 import ru.solomka.fmh.app.core.repository.NetworkRepository
 import ru.solomka.fmh.app.core.service.UserService

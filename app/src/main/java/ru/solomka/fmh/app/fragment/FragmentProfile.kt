@@ -7,9 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.fmh.R
+import ru.solomka.fmh.app.MainActivity
+import ru.solomka.fmh.app.R
 
 class FragmentProfile : Fragment() {
+
+    companion object {
+        val cache = MainActivity.USER_DATA_CACHE
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
@@ -18,7 +24,6 @@ class FragmentProfile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Заглушки. TODO: Request
         view.findViewById<TextView>(R.id.tvUserName).text = "Иван Иванов"
         view.findViewById<TextView>(R.id.tvRegDate).text = "Регистрация: 12.10.2023"
 

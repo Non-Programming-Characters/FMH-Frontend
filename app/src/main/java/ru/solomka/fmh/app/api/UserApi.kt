@@ -1,4 +1,4 @@
-package ru.solomka.fmh.app.core.api
+package ru.solomka.fmh.app.api
 
 import ru.solomka.fmh.app.core.dto.user.UserTestInfoDto
 import retrofit2.Response
