@@ -53,9 +53,13 @@ class MainActivity : AppCompatActivity() {
             // TODO: Сохранять в "кэш" и потом из него дергать
         }
 
-        val vrm = VoiceRecognizerModel(this)
+        val vrm: VoiceSpeakQueue = VoiceRecognizerModel(this)
 
-        vrm.speakWithCallback("Привет")
+        vrm.queueSpeak("Привет!")
+            .queueSpeak("Мир")
+            .queueSpeak("Как дела")
+            .queueSpeak("Замок")
+            .queueSpeak("Замо'к")
     }
 
     private fun loadFragment(fragment: Fragment) {
