@@ -26,7 +26,7 @@ fun BottomNavigationBar(
     refSquare: (Float) -> Dp
 ) {
     @Composable
-    fun Modifier.interactiveClick(onClick: () -> Unit) = this.clickable(
+    fun Modifier.interactiveClick(onClick: () -> Unit): Modifier = this.clickable(
         interactionSource = remember { MutableInteractionSource() },
         indication = LocalIndication.current,
         onClick = onClick
@@ -42,8 +42,35 @@ fun BottomNavigationBar(
             .size(width = refW(360f), height = refH(75f))
             .background(BottomBarBgColor)
     ) {
-        Icon(Icons.Default.Home, "Главная", tint = homeColor, modifier = Modifier.align(Alignment.TopStart).offset(x = refX(45f), y = refY(17f)).size(refSquare(40f)).interactiveClick { onTabChange("home") })
-        Icon(Icons.AutoMirrored.Filled.MenuBook, "Материалы", tint = bookColor, modifier = Modifier.align(Alignment.TopStart).offset(x = refX(160f), y = refY(17f)).size(refSquare(40f)).interactiveClick { onTabChange("materials") })
-        Icon(Icons.Default.Person, "Профиль", tint = personColor, modifier = Modifier.align(Alignment.TopStart).offset(x = refX(275f), y = refY(17f)).size(refSquare(40f)).interactiveClick { onTabChange("profile") })
+        Icon(
+            imageVector = Icons.Default.Home,
+            contentDescription = null,
+            tint = homeColor,
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .offset(x = refX(45f), y = refY(17f))
+                .size(refSquare(40f))
+                .interactiveClick { onTabChange("home") }
+        )
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.MenuBook,
+            contentDescription = null,
+            tint = bookColor,
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .offset(x = refX(160f), y = refY(17f))
+                .size(refSquare(40f))
+                .interactiveClick { onTabChange("materials") }
+        )
+        Icon(
+            imageVector = Icons.Default.Person,
+            contentDescription = null,
+            tint = personColor,
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .offset(x = refX(275f), y = refY(17f))
+                .size(refSquare(40f))
+                .interactiveClick { onTabChange("profile") }
+        )
     }
 }
